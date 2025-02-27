@@ -1,0 +1,111 @@
+/* Center the buttons container */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+/* Base button styles */
+.btn {
+    width: 60%; /* Make buttons wider */
+    max-width: 300px; /* Limit maximum width */
+    padding: 15px 20px; /* Increase padding */
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Increase font size */
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.4s ease, transform 0.2s ease;
+    margin: 10px; /* Add space between buttons */
+}
+
+/* Easy button */
+.easybtn {
+    background: lightgreen;
+    color: white;
+}
+
+.easybtn:hover {
+    background: linear-gradient(to bottom, green, lightgreen);
+    transform: scale(1.08);
+}
+
+/* Medium button */
+.mediumbtn {
+    background: orange;
+    color: white;
+}
+
+.mediumbtn:hover {
+    background: linear-gradient(to bottom, orangered, orange);
+    transform: scale(1.08);
+}
+
+/* Hard button */
+.hardbtn {
+    background: darkred;
+    color: white;
+}
+
+.hardbtn:hover {
+    background: linear-gradient(to bottom, red, darkred);
+    transform: scale(1.08);
+}
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    left: -250px;
+    top: 0;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    transition: left 0.3s ease;
+}
+
+.sidebar a {
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: #444;
+}
+
+.sidebar .active {
+    background: #007bff;
+    font-weight: bold;
+}
+
+#toggle-sidebar {
+    display: none;
+}
+
+#toggle-sidebar:checked ~ .sidebar {
+    left: 0;
+}
+
+.toggle-label {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 18px;
+}
+
+.toggle-label:hover {
+    background: #0056b3;
+}

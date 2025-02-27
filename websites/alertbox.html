@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="lib/login.css">
+    <link rel="alerbox" href="alertbox.html">
+ 
+
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Welcome Back</h1>
+        <form class="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" class="login-btn">Log In</button>
+        </form>
+    </div>
+
+    <div class="alert" id="alertBox">
+        Logged in successfully!
+    </div>
+
+    <footer>
+        <p>&copy; 2025 My Website | Follow us on <a href="https://www.facebook.com" target="_blank">Facebook</a></p>
+    </footer>
+
+    <script>
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert("Please fill in both fields."); // Default browser alert if fields are empty
+                return;
+            }
+
+            // Show the custom alert if both fields are filled
+            const alertBox = document.getElementById('alertBox');
+            alertBox.classList.add('show'); // Add the 'show' class to trigger the animation
+
+            // Hide the alert after 3 seconds
+            setTimeout(() => {
+                alertBox.classList.remove('show'); // Remove the 'show' class after 3 seconds
+            }, 3000);
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,419 @@
+/*========================================================
+  CSS for Code Bee Responsive Layout with Sidebar & Main Area
+  - Uses Flexbox for layout and media queries for responsiveness.
+  - On large screens, the sidebar is 250px wide.
+  - On screens below 600px, the sidebar shrinks to 80px with a smooth transition.
+========================================================*/
+
+/* Variables for easy theming */
+:root {
+  --primary-cyan: #00bfae;
+  --primary-orange: #ff6f61;
+  --background-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --text-color: white; /* Fallback color */
+  --glass-bg: rgba(30, 30, 47, 0.7);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Body Styling */
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--background-gradient);
+  color: var(--text-color);
+  min-height: 100vh;
+  /* Center content horizontally */
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Responsive Container for Main Content */
+.container {
+  width: 90%; /* Fluid width */
+  max-width: 1200px; /* Maximum width */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* Contrast background */
+}
+
+/* Adjust container spacing on smaller screens */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+}
+
+/*==============================
+   Sidebar Styles
+===============================*/
+
+/* Sidebar base styling (fixed on large screens) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background: var(--glass-bg); /* Uses the gradient background variable */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  /* Transition for smooth width changes */
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+/* Removed transform in minimized state to prevent shifting */
+// .sidebar.minimized {
+//   transform: translateX(-190px);
+// }
+
+/* Toggle Button styling */
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.sidebar.minimized .toggle-btn {
+  align-self: flex-end;
+}
+
+/* Menu Items in Sidebar */
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.menu-item:hover {
+  background: linear-gradient(135deg, var(--primary-orange), var(--primary-cyan));
+  transform: translateY(-3px);
+}
+.menu-item .icon {
+  font-size: 22px;
+  margin-right: 10px;
+}
+.menu-item .text {
+  font-size: 16px;
+}
+
+/*==============================
+   Main Content Styles
+===============================*/
+
+/* Main content area positioned to the right of the sidebar */
+.main-content {
+  margin-left: 250px; /* Matches the sidebar width */
+  padding: 20px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* Updated minimized state: Only change width */
+.sidebar.minimized {
+  width: 80px; /* Shrinks the sidebar without moving it */
+}
+
+/* Adjust main content margin when sidebar is minimized */
+.sidebar.minimized + .main-content {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+}
+
+/* Additional adjustments for menu items in minimized sidebar */
+/* Hide the menu text when sidebar is minimized */
+.sidebar.minimized .menu-item .text {
+  display: none;
+}
+/* Center the icons in minimized state */
+.sidebar.minimized .menu-item .icon {
+  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Optional: Adjust padding for menu items in minimized state */
+.sidebar.minimized .menu-item {
+  padding: 10px 0;
+}
+
+/*==============================
+   About Section Card Styling
+===============================*/
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Headings & Paragraphs in About Cards */
+.about-card h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.about-card p,
+.about-card ul {
+  font-size: 24px;
+  line-height: 1.6;
+}
+.about-card ul {
+  list-style: none;
+  padding: 0;
+}
+.about-card li {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Responsive adjustments for About Cards */
+@media (max-width: 768px) {
+  .about-card h1 {
+    font-size: 36px;
+  }
+  .about-card p,
+  .about-card ul {
+    font-size: 18px;
+  }
+}
+
+/*==============================
+   Lesson Detail & Java Editor Styles
+===============================*/
+
+.lesson-detail,
+#java-editor-container {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Topic spacing in lesson sections */
+.topic {
+  margin-bottom: 20px;
+}
+.about-card,
+.lesson-detail,
+.instruction-card,
+.output-card,
+.image-area {
+  text-align: center;
+}
+.image-area img,
+.my-video {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Lesson Detail Headings & Paragraphs */
+.lesson-detail h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  animation: slideIn 0.5s ease-in-out;
+}
+.lesson-detail p {
+  font-size: 16px;
+  line-height: 1.6;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+/*==============================
+   Lesson List in Sidebar
+===============================*/
+
+#lesson-list {
+  display: none;
+  margin-left: 20px;
+}
+.lesson-item {
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+.lesson-item:hover {
+  background-color: #f0f0f0;
+}
+
+/*==============================
+   Instruction & Output Cards
+===============================*/
+
+.instruction-card,
+.output-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid cyan;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+.instruction {
+  font-size: 50px;
+  line-height: 1.6;
+}
+.h3 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+/*==============================
+   Code Block & Video Styling
+===============================*/
+
+pre code {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  overflow-x: auto;
+  color: #f8f8f2;
+}
+.java-code {
+  background-color: white;
+  color: black;
+}
+li {
+  color: var(--primary-cyan);
+}
+code.html-code {
+  color: #e74c3c;
+}
+code.css-code {
+  color: #3498db;
+}
+
+/* Global Gradient Text for smaller text elements */
+p,
+a,
+span,
+.text {
+  background: linear-gradient(45deg, var(--primary-cyan), var(--primary-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Headings in Orange */
+h1,
+h2,
+h3 {
+  background: none;
+  color: var(--primary-orange) !important;
+  -webkit-text-fill-color: var(--primary-orange);
+}
+
+/* Image Area Styling */
+.image-area {
+  margin-top: 10px;
+  text-align: center;
+}
+.image-area img {
+  max-width: 100%;
+  border: 2px solid var(--primary-cyan);
+  border-radius: 8px;
+}
+
+/*==============================
+   Responsive Adjustments for Smaller Screens
+===============================*/
+
+/* For screens below 768px, change the sidebar layout to horizontal */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 10px;
+  }
+  .sidebar .menu-item {
+    flex: 1;
+    justify-content: center;
+  }
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+  .about-card h1 {
+    font-size: 28px;
+  }
+  .about-card p,
+  .about-card ul {
+    font-size: 16px;
+  }
+}
+
+/* For screens smaller than 600px, shrink the sidebar to 80px with smooth transitions */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 80px;
+  }
+  .main-content {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+  }
+}
+
+/* Additional styling for tutorial steps */
+.tutorial-steps {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+.tutorial-steps li {
+  margin-bottom: 15px;
+}
+
+/* Keyframe animations for fadeIn and slideIn effects */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

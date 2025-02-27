@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VB.NET</title>
+  <link rel="stylesheet" href="lib/dotnetstyle.css" />
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('minimized');
+    }
+
+    function showCompilerVBNet() {
+      const compilerContainer = document.getElementById('compiler-container');
+      compilerContainer.style.display = 'block';
+      compilerContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="menu-item" title="Home" onclick="location.href='index.html'">
+      <i class="icon">🏠</i><span class="text">Home</span>
+    </div>
+    <div class="menu-item" title="Lesson" onclick="location.href='https://www.tutorialspoint.com/vb.net/index.htm'">
+      <i class="icon">📚</i><span class="text">Lesson</span>
+    </div>
+    <div class="menu-item" title="Quiz">
+      <i class="icon">📝</i><span class="text">Quiz</span>
+    </div>
+    <div class="menu-item" title="About">
+        <i class="icon">ℹ️</i><span class="text">About</span>
+    </div>
+    <div class="menu-item" title="VB.NET Editor" onclick="showCompilerVBNet()">
+      <i class="icon">💻</i><span class="text">VB.NET</span>
+    </div>
+  </div>
+
+  <main class="content">
+    <section id="compiler-container" style="display: none;">
+      <h1>VB.NET Compiler</h1>
+      <div data-pym-src="https://www.jdoodle.com/embed/v1/a5a21b3c29cfdb63"></div>
+      <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+    </section>
+  </main>
+
+  <script src="lib/js/dotnet.js"></script>
+</body>
+</html>
+

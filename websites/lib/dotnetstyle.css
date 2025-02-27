@@ -1,0 +1,161 @@
+/* Variables */
+:root {
+    --primary-cyan: #00bfae;
+    --primary-orange: #ff6f61;
+    --background-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --text-color: white;
+    --glass-bg: rgba(30, 30, 47, 0.7);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-gradient);
+    color: var(--text-color);
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background: var(--glass-bg);
+    width: 250px;
+    min-height: 100vh;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: width 0.3s ease;
+}
+
+.sidebar.minimized {
+    width: 60px;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item:hover {
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-cyan));
+    transform: translateX(5px);
+}
+
+.menu-item .icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/* Hide text when sidebar is minimized */
+.sidebar.minimized .text {
+    display: none;
+}
+
+/* Submenu Styling */
+.submenu {
+    margin-left: 30px;
+    margin-top: 5px;
+    display: none;
+    flex-direction: column;
+}
+
+.menu-item:hover .submenu {
+    display: flex;
+}
+
+.submenu-item {
+    padding: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.submenu-item:hover {
+    color: var(--primary-cyan);
+}
+
+/* Content Styling */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.minimized ~ .content {
+    margin-left: 60px;
+}
+
+.content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Main Area Styling */
+main {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.minimized ~ main {
+    margin-left: 60px;
+}
+
+main h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Styling the embedded compiler container */
+main div[data-pym-src] {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* VB.NET Section Styling */
+#vbNetSection {
+    display: none; /* Hide by default */
+    padding: 20px;
+    background: var(--glass-bg);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    .sidebar.minimized {
+        width: 50px;
+    }
+    .content,
+    main {
+        margin-left: 200px;
+    }
+    .sidebar.minimized ~ .content,
+    .sidebar.minimized ~ main {
+        margin-left: 50px;
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Bee - Learn Java & VB.NET</title>
+  <link rel="stylesheet" href="lib/index.css">
+</head>
+<body>
+  <header>
+    <img src="images/wb.png" alt="Code Bee Logo">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <h1>Welcome to Code Bee</h1>
+    <p>Your gateway to mastering Java and VB.NET.</p>
+    <button id="getStarted">Get Started</button>
+  </div>
+
+  <!-- Our Feature Section -->
+  <div class="container" id="our-feature">
+    <h2 class="feature-heading">Our Feature</h2>
+    <div class="card">
+      <div class="icon">☕</div>
+      <h3>Java</h3>
+      <p>Learn and practice Java programming. Click below to get started.</p>
+      <a href="java.html" target="_blank">Start Now →</a>
+    </div>
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>VB.NET</h3>
+      <p>Learn and practice VB.NET programming. Click below to get started.</p>
+      <a href="DOTNET.html" target="_blank">Start Now →</a>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="about-section" id="about">
+    <h1>About Code Bee</h1>
+    <p>Code Bee is a cutting-edge platform designed to help students and developers gain in-depth knowledge of programming.
+       With interactive lessons, hands-on coding challenges, and a supportive community, Code Bee is your gateway to mastering
+       both Java and VB.NET. Explore our features, learn from experts, and elevate your coding skills to new heights!</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Code Bee | Follow us on 
+      <a href="https://www.facebook.com/reignkaizen.bonsa" target="_blank">Facebook</a>
+    </p>
+  </footer>
+
+  <script>
+    // When "Get Started" is clicked, scroll to "Our Feature" section
+    document.getElementById("getStarted").addEventListener("click", function() {
+      document.getElementById("our-feature").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
